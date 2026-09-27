@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: #E9E9E2;
+  color: #15181B;
+}
+
+/* Blueprint grid backgrounds -------------------------------------------- */
+
+.grid-dark {
+  background-color: #15181B;
+  background-image:
+    linear-gradient(to right, rgba(233, 233, 226, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(233, 233, 226, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.grid-light {
+  background-color: #E9E9E2;
+  background-image:
+    linear-gradient(to right, rgba(21, 24, 27, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(21, 24, 27, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Hairline rule used throughout instead of card borders/shadows */
+
+.rule-top {
+  border-top: 1px solid rgba(21, 24, 27, 0.16);
+}
+.rule-bottom {
+  border-bottom: 1px solid rgba(21, 24, 27, 0.16);
+}
+
+.rule-top-dark {
+  border-top: 1px solid rgba(233, 233, 226, 0.16);
+}
+.rule-bottom-dark {
+  border-bottom: 1px solid rgba(233, 233, 226, 0.16);
+}
+
+/* Focus visibility -------------------------------------------------------*/
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2A5DA8;
+  outline-offset: 3px;
+}
+
+/* Hero draw-in animation, one orchestrated moment only ------------------ */
+
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--len); }
+  to { stroke-dashoffset: 0; }
+}
+
+.draw-in path,
+.draw-in line,
+.draw-in circle {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw-line 1.4s ease-out forwards;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-fade-1 { animation: fade-up 0.7s ease-out 0.1s both; }
+.hero-fade-2 { animation: fade-up 0.7s ease-out 0.3s both; }
+.hero-fade-3 { animation: fade-up 0.7s ease-out 0.5s both; }
